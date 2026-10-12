@@ -1,5 +1,3 @@
-package src;
-
 public class HarrisBenedictStrategy implements CalorieCalculationStrategy {
     @Override
     public double calculateCalories(double weight, double height, int age, boolean isMale) {
