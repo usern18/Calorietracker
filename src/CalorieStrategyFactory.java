@@ -1,17 +1,17 @@
 public class CalorieStrategyFactory {
-    public static CalorieCalculationStrategy getStrategy(String type) {
+
+    public static MealEvaluator createEvaluator(String type) {
         if (type == null) {
-            throw new IllegalArgumentException("Strategy type cannot be null");
+            throw new IllegalArgumentException("Тип оцінювача не може бути null");
         }
-        switch (type.toLowerCase()) {
-            case "mifflin":
-            case "miffstjeor":
-                return new MiffStJeorStrategy();
-            case "harris":
-            case "harrisbenedict":
-                return new HarrisBenedictStrategy();
+
+        switch (type.toLowerCase().trim()) {
+            case "keto":
+                return new KetoEvaluator();
+            case "protein":
+                return new ProteinEvaluator();
             default:
-                throw new IllegalArgumentException("Unknown strategy type: " + type);
+                throw new IllegalArgumentException("Невідомий тип оцінювача: " + type);
         }
     }
 }
