@@ -7,11 +7,37 @@ public class Food {
     private double proteinPer100g;
     private int mealTypeInt;
 
-    public Food(String mealName, double weightGrams, double caloriesPer100g, double proteinPer100g, int mealTypeInt) {
+    public Food(String mealName, double weightGrams, double caloriesPer100g, double proteinPer100g, int mealTypeInt) throws InvalidCaloriesException {
+        setMealName(mealName);
+        setWeightGrams(weightGrams);
+        setCaloriesPer100g(caloriesPer100g);
+        setProteinPer100g(proteinPer100g);
+        setMealTypeInt(mealTypeInt);
+    }
+
+    public void setMealName(String mealName) {
         this.mealName = mealName;
+    }
+
+    public void setWeightGrams(double weightGrams) throws InvalidCaloriesException {
+        if (weightGrams <= 0) {
+            throw new InvalidCaloriesException("Вага страви не може бути від'ємною або нульовою!", weightGrams);
+        }
         this.weightGrams = weightGrams;
+    }
+
+    public void setCaloriesPer100g(double caloriesPer100g) throws InvalidCaloriesException {
+        if (caloriesPer100g < 0) {
+            throw new InvalidCaloriesException("Калорійність на 100г не може бути від'ємною!", caloriesPer100g);
+        }
         this.caloriesPer100g = caloriesPer100g;
+    }
+
+    public void setProteinPer100g(double proteinPer100g) {
         this.proteinPer100g = proteinPer100g;
+    }
+
+    public void setMealTypeInt(int mealTypeInt) {
         this.mealTypeInt = mealTypeInt;
     }
 
@@ -54,7 +80,7 @@ public class Food {
         return Double.compare(food.weightGrams, weightGrams) == 0 &&
                 Double.compare(food.caloriesPer100g, caloriesPer100g) == 0 &&
                 Double.compare(food.proteinPer100g, proteinPer100g) == 0 &&
-                mealTypeInt == mealTypeInt &&
+                mealTypeInt == food.mealTypeInt &&
                 Objects.equals(mealName, food.mealName);
     }
 
