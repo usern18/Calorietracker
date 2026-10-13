@@ -1,4 +1,9 @@
-package PACKAGE_NAME;
+public abstract class BaseMealEvaluator implements MealEvaluator {
 
-public class BaseMealEvaluator {
+    protected boolean isLightPortion(Food food) {
+        return food.getTotalCalories() < 300;
+    }
+
+    @Override
+    public abstract String evaluate(Food food);
 }
