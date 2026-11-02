@@ -1,3 +1,4 @@
+
 ### IntelliJ IDEA ###
 out/
 !**/src/main/**/out/
@@ -28,3 +29,12 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### Maven ###
+/target/
+
+### MySQL local configuration ###
+/application-local.properties
+
+### Temporary files ###
+*.log
